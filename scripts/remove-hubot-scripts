@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var path = require('path');
+
+var file = path.join(__dirname, 'hubot-scripts.json');
+var scripts = JSON.parse(fs.readFileSync(file), 'utf8');
+var remove = process.argv.slice(2);
+scripts = scripts.filter(function(script) { return remove.indexOf(script) === -1; });
+fs.writeFileSync(file, JSON.stringify(scripts, null, 2), 'utf8');

@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var path = require('path');
+
+var file = path.join(__dirname, 'external-scripts.json');
+var scripts = JSON.parse(fs.readFileSync(file), 'utf8');
+scripts = scripts.concat(process.argv.slice(2));
+fs.writeFileSync(file, JSON.stringify(scripts, null, 2), 'utf8');
