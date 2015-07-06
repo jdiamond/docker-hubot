@@ -8,6 +8,9 @@ RUN groupadd -r hubot && \
     npm install -g yo generator-hubot && \
     npm cache clear
 
+COPY add-external-scripts /home/hubot/add-external-scripts
+RUN chmod +x /home/hubot/add-external-scripts
+
 USER hubot
 WORKDIR /home/hubot
 
